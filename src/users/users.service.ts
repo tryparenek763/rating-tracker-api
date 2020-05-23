@@ -1,4 +1,6 @@
 import { Injectable } from '@nestjs/common';
+import { Model } from 'mongoose';
+import { InjectModel } from '@nestjs/mongoose';
 
 export type User = any;
 
@@ -6,7 +8,7 @@ export type User = any;
 export class UsersService {
   private readonly users: User[];
 
-  constructor() {
+  constructor(@InjectModel('User') private userModel: Model<User>) {
     this.users = [
       {
         userId: 1,

@@ -29,7 +29,7 @@ export class AppController {
 
   @UseGuards(JwtAuthGuard)
   @Get('template')
-  getTemplate(@Request() req) {
+  getTemplate() {
     return this.applicationFormsService.getTemplate();
   }
 
