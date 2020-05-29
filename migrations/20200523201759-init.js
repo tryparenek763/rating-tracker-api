@@ -10,7 +10,7 @@ const migration = {
 
   async down(db, client) {
     const collections = await Promise.all([
-      await db.collection('position'),
+      await db.collection('positions'),
       await db.collection('users'),
       await db.collection('templates'),
       await db.collection('groups'),
@@ -22,7 +22,7 @@ const migration = {
   }
 };
 
-async function saveArrayToCollection(collection, array) { 
+async function saveArrayToCollection(collection, array) {
   return Promise.all(
     array.map(async item => {
       const { insertedId } = await collection.insertOne(item);
@@ -33,10 +33,10 @@ async function saveArrayToCollection(collection, array) {
 }
 
 async function seedUsers(db) {
-  const position = await db.createCollection('position');
+  const positions = await db.createCollection('positions');
   const users = await db.createCollection('users');
 
-  await position.insertMany([
+  await positions.insertMany([
     {
       name: "Младший разработчик"
     },
@@ -51,26 +51,26 @@ async function seedUsers(db) {
     }
   ]);
 
-  const junior = await position.findOne({ name: 'Младший разработчик' })
-  const middle = await position.findOne({ name: 'Разработчик' })
+  const junior = await positions.findOne({ name: 'Младший разработчик' })
+  const middle = await positions.findOne({ name: 'Разработчик' })
 
   await users.insertMany([
     {
       name: "Максим",
       surname: "Тимошенко",
-      positionId: junior._id,
+      positionsId: junior._id,
       rating: 0
     },
     {
       name: "Денис",
       surname: "Петров",
-      positionId: middle._id,
+      positionsId: middle._id,
       rating: 0
     },
     {
       name: "Евгений",
       surname: "Жуков",
-      positionId: middle._id,
+      positionsId: middle._id,
       rating: 0
     }
   ]);
@@ -98,7 +98,7 @@ async function seedTemplate(db) {
   );
 
   const groupsIds = await saveGroups(savedObjects);
-    
+
   await templatesCollection.insertOne({
     groupsIds
   });

@@ -1,13 +1,10 @@
 import * as mongoose from 'mongoose';
 
+const ObjectId = mongoose.Schema.Types.ObjectId;
+
 export const UserSchema = new mongoose.Schema({
-    userId: Number,
-    username: String,
-    password: String,
     name: String,
     surname: String,
-    position: String,
-    type: String,
-    level: String,
+    positionsId: ObjectId,
     rating: Number
 });
