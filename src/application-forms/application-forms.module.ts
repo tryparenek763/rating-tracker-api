@@ -6,6 +6,7 @@ import { GroupSchema } from 'src/schemas/groups';
 import { SubgroupSchema } from 'src/schemas/subgroups';
 import { PositionSchema } from 'src/schemas/positions';
 import { QuestionSchema } from 'src/schemas/questions';
+import { ApplicationFormSchema } from 'src/schemas/application-forms';
 
 
 @Module({
@@ -14,7 +15,8 @@ import { QuestionSchema } from 'src/schemas/questions';
     MongooseModule.forFeature([{ name: 'Group', schema: GroupSchema }]),
     MongooseModule.forFeature([{ name: 'Subgroup', schema: SubgroupSchema }]),
     MongooseModule.forFeature([{ name: 'Position', schema: PositionSchema }]),
-    MongooseModule.forFeature([{ name: 'Question', schema: QuestionSchema }])
+    MongooseModule.forFeature([{ name: 'Question', schema: QuestionSchema }]),
+    MongooseModule.forFeature([{ name: 'ApplicationForm', schema: ApplicationFormSchema }])
   ],
   providers: [ApplicationFormsService],
   exports: [ApplicationFormsService]

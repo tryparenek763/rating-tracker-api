@@ -58,20 +58,26 @@ async function seedUsers(db) {
     {
       name: "Максим",
       surname: "Тимошенко",
-      positionsId: junior._id,
-      rating: 0
+      positionId: junior._id,
+      rating: 0,
+      username: 'maxim',
+      password: '1234'
     },
     {
       name: "Денис",
       surname: "Петров",
-      positionsId: middle._id,
-      rating: 0
+      positionId: middle._id,
+      rating: 0,
+      username: 'denis',
+      password: '1234'
     },
     {
       name: "Евгений",
       surname: "Жуков",
-      positionsId: middle._id,
-      rating: 0
+      positionId: middle._id,
+      rating: 0,
+      username: 'evgen',
+      password: '1234'
     }
   ]);
 }
@@ -81,6 +87,7 @@ async function seedTemplate(db) {
   const groupsCollection = await db.createCollection('groups');
   const subgroupsCollection = await db.createCollection('subgroups');
   const questionsCollection = await db.createCollection('questions');
+  await db.createCollection('application-forms');
 
   const saveGroups = saveArrayToCollection.bind(this, groupsCollection);
   const saveSubgroups = saveArrayToCollection.bind(this, subgroupsCollection);

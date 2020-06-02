@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Request, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Request, UseGuards, Body } from '@nestjs/common';
 import { AuthService } from './auth/auth.service';
 import { UsersService } from './users/users.service';
 import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
@@ -16,15 +16,19 @@ export class AppController {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Get('profile')
-  getProfile(@Request() req) {
-    return this.usersService.findOne(req.user.username);
+  @Get('users/me')
+  getCurrentUser(@Request() req) {
+    return this.usersService.getCurrentUser(req.user.username);
   }
-
+  @UseGuards(JwtAuthGuard)
+  @Get('users')
+  getUsers(@Request() req) {
+    return this.usersService.getUsers();
+  }
   @UseGuards(JwtAuthGuard)
   @Post('forms')
-  async createApplicationForms(@Request() req) {
-    return this.applicationFormsService.createForm();
+  async createApplicationForms(@Body() form: any) {
+    return this.applicationFormsService.createForm(form);
   }
 
   @UseGuards(JwtAuthGuard)

@@ -1,10 +1,19 @@
 import * as mongoose from 'mongoose';
+const Schema = mongoose.Schema;
 
-const ObjectId = mongoose.Schema.Types.ObjectId;
+const transform = function (doc, { positionId, _id, ...ret }, options) {
+
+    return { ...ret, position: positionId, id: _id };
+}
 
 export const UserSchema = new mongoose.Schema({
     name: String,
     surname: String,
-    positionsId: ObjectId,
-    rating: Number
-});
+    positionId: {
+        type: Schema.Types.ObjectId,
+        ref: 'Position'
+    },
+    rating: Number,
+    username: String
+
+}, { toJSON: { transform }, toObject: { transform } });
