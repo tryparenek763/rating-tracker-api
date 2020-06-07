@@ -11,7 +11,7 @@ export const GroupSchema = new mongoose.Schema({
     subgroupsIds: {
         type: [{
             type: Schema.Types.ObjectId,
-            ref: 'Subgroup'
+            ref: 'Subgroups'
         }]
     }
 }, { toJSON: { transform } });

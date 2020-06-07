@@ -10,7 +10,7 @@ export const TemplateSchema = new mongoose.Schema({
     groupsIds: {
         type: [{
             type: Schema.Types.ObjectId,
-            ref: 'Group'
+            ref: 'Groups'
         }]
     }
 }, { toJSON: { transform } });

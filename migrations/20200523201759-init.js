@@ -87,7 +87,8 @@ async function seedTemplate(db) {
   const groupsCollection = await db.createCollection('groups');
   const subgroupsCollection = await db.createCollection('subgroups');
   const questionsCollection = await db.createCollection('questions');
-  await db.createCollection('application-forms');
+  await db.createCollection('applicationforms');
+  await db.createCollection('questionsapplicationforms');
 
   const saveGroups = saveArrayToCollection.bind(this, groupsCollection);
   const saveSubgroups = saveArrayToCollection.bind(this, subgroupsCollection);

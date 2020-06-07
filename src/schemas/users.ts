@@ -11,7 +11,7 @@ export const UserSchema = new mongoose.Schema({
     surname: String,
     positionId: {
         type: Schema.Types.ObjectId,
-        ref: 'Position'
+        ref: 'Positions'
     },
     rating: Number,
     username: String

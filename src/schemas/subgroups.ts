@@ -12,7 +12,7 @@ export const SubgroupSchema = new mongoose.Schema({
     questionsIds: {
         type: [{
             type: Schema.Types.ObjectId,
-            ref: 'Question'
+            ref: 'Questions'
         }]
     }
 }, { toJSON: { transform } });

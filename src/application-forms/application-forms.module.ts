@@ -7,16 +7,20 @@ import { SubgroupSchema } from 'src/schemas/subgroups';
 import { PositionSchema } from 'src/schemas/positions';
 import { QuestionSchema } from 'src/schemas/questions';
 import { ApplicationFormSchema } from 'src/schemas/application-forms';
+import { QuestionApplicationFormSchema } from 'src/schemas/questions_application-forms';
+import { UserSchema } from 'src/schemas/users';
 
 
 @Module({
   imports: [
-    MongooseModule.forFeature([{ name: 'Template', schema: TemplateSchema }]),
-    MongooseModule.forFeature([{ name: 'Group', schema: GroupSchema }]),
-    MongooseModule.forFeature([{ name: 'Subgroup', schema: SubgroupSchema }]),
-    MongooseModule.forFeature([{ name: 'Position', schema: PositionSchema }]),
-    MongooseModule.forFeature([{ name: 'Question', schema: QuestionSchema }]),
-    MongooseModule.forFeature([{ name: 'ApplicationForm', schema: ApplicationFormSchema }])
+    MongooseModule.forFeature([{ name: 'Users', schema: UserSchema }]),
+    MongooseModule.forFeature([{ name: 'Templates', schema: TemplateSchema }]),
+    MongooseModule.forFeature([{ name: 'Groups', schema: GroupSchema }]),
+    MongooseModule.forFeature([{ name: 'Subgroups', schema: SubgroupSchema }]),
+    MongooseModule.forFeature([{ name: 'Positions', schema: PositionSchema }]),
+    MongooseModule.forFeature([{ name: 'Questions', schema: QuestionSchema }]),
+    MongooseModule.forFeature([{ name: 'ApplicationForms', schema: ApplicationFormSchema }]),
+    MongooseModule.forFeature([{ name: 'QuestionsApplicationForms', schema: QuestionApplicationFormSchema }])
   ],
   providers: [ApplicationFormsService],
   exports: [ApplicationFormsService]

@@ -6,7 +6,7 @@ export type User = any;
 
 @Injectable()
 export class UsersService {
-  constructor(@InjectModel('User') private userModel: Model<User>) {
+  constructor(@InjectModel('Users') private userModel: Model<User>) {
 
   }
   async getUsers(): Promise<User[] | undefined> {
