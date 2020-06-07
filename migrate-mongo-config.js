@@ -6,7 +6,7 @@ const config = {
     url: process.env.MONGODB_URI || "mongodb://localhost:27017",
 
     // TODO Change this to your database name:
-    databaseName: "rating-tracker-db",
+    databaseName: "heroku_74n8qkzz",
 
     options: {
       useNewUrlParser: true, // removes a deprecation warning when connecting
