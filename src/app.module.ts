@@ -7,7 +7,7 @@ import { ApplicationFormsModule } from './application-forms/application-forms.mo
 import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
-  imports: [AuthModule, UsersModule, ApplicationFormsModule, MongooseModule.forRoot('mongodb://localhost:27017/rating-tracker-db')],
+  imports: [AuthModule, UsersModule, ApplicationFormsModule, MongooseModule.forRoot(process.env.MONGODB_URI || 'mongodb://localhost:27017/rating-tracker-db')],
   controllers: [AppController],
   providers: [AppService],
 })
